@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="book"
+            type="com.example.booklibrary.BookModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/margin_8"
+        android:padding="@dimen/padd_8">
+
+        <ImageView
+            android:id="@+id/book_iv"
+            android:layout_width="80dp"
+            android:layout_height="100dp"
+            android:scaleType="centerCrop"
+            app:imageResource="@{book.img}"
+
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/title_tv"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:text="@{book.title}"
+            android:textColor="@color/black"
+            android:textFontWeight="900"
+            app:layout_constraintEnd_toStartOf="@+id/want_to_read_btn"
+
+            app:layout_constraintStart_toEndOf="@id/book_iv"
+            app:layout_constraintTop_toTopOf="@id/book_iv" />
+
+        <TextView
+            android:id="@+id/author_tv"
+            customAuthor="@{book.author}"
+            android:layout_width="0dp"
+            android:textFontWeight="700"
+            android:layout_marginTop="@dimen/margin_8"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            app:layout_constraintEnd_toStartOf="@+id/want_to_read_btn"
+            app:layout_constraintStart_toEndOf="@id/book_iv"
+            app:layout_constraintTop_toBottomOf="@id/title_tv" />
+
+        <Button
+            android:id="@+id/want_to_read_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/orange"
+            android:text="@string/want_to_read"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            app:layout_constraintEnd_toStartOf="@id/close"
+            app:layout_constraintTop_toTopOf="@id/title_tv"
+            tools:layout_editor_absoluteX="280dp" />
+
+        <RatingBar
+            android:id="@+id/ratingBar"
+            style="?android:attr/ratingBarStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:progressTint="#ffff8800"
+            android:rating="@{book.rate}"
+            app:layout_constraintEnd_toEndOf="@+id/want_to_read_btn"
+            app:layout_constraintStart_toStartOf="@+id/want_to_read_btn"
+            app:layout_constraintTop_toBottomOf="@id/want_to_read_btn" />
+
+        <Button
+            android:id="@+id/close"
+            android:layout_width="20dp"
+            android:layout_height="30dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:drawableBottom="@drawable/close"
+            android:padding="15dp"
+            app:layout_constraintBottom_toBottomOf="@+id/want_to_read_btn"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/want_to_read_btn" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
